@@ -19,6 +19,9 @@ export default function PostCreate() {
       onSubmit={onSubmit}
       className="w-[400px] max-w-full mx-auto border border-gray-300 p-5 rounded-lg shadow-lg drop-shadow-lg shadow-cyan-900"
     >
+      <div className="text-bold text-white text-2xl mb-5 underline font-bold">
+        Create Post
+      </div>
       <div className="mb-5">
         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
           Title
