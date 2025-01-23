@@ -6,7 +6,6 @@ export default function PostList() {
 
   const fetchPosts = async () => {
     const res = await axios.get("http://localhost:4000/posts");
-
     setPosts(res.data);
   };
 
@@ -16,22 +15,19 @@ export default function PostList() {
 
   const renderedPosts = Object.values(posts).map((post) => {
     return (
-      <div key={post.id} style={{ width: "30%", marginBottom: "20px" }}>
-        <div>
-          <h3>{post.title}</h3>
-        </div>
+      <div
+        key={post.id}
+        className="w-full sm:w-80 md:w-96 lg:w-1/4 xl:w-1/5 p-5 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 mb-5"
+      >
+        <h3 className="text-xl font-semibold text-gray-800">{post.title}</h3>
       </div>
     );
   });
-  console.log(renderedPosts);
 
   return (
-    <div>
-      <h1 className="font-bold text-3xl underline text-white text-center m-5 ">
-        Posts
-      </h1>
-
-      {renderedPosts}
+    <div className="w-full px-5 py-10">
+      <h1 className="font-bold text-3xl text-white text-center mb-8">Posts</h1>
+      <div className="flex flex-wrap justify-center gap-5">{renderedPosts}</div>
     </div>
   );
 }

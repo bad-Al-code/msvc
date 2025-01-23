@@ -15,29 +15,26 @@ export default function PostCreate() {
   };
 
   return (
-    <div>
-      <h1 className="font-bold text-3xl underline text-white text-center m-5 ">
-        Create Posts
+    <div className="w-full max-w-lg mx-auto mt-10">
+      <h1 className="font-bold text-3xl text-white text-center mb-8">
+        Create Post
       </h1>
-      <form
-        onSubmit={onSubmit}
-        className="w-[400px] max-w-full mx-auto border border-gray-300 p-10 rounded-lg shadow-lg drop-shadow-lg shadow-cyan-900"
-      >
+      <form onSubmit={onSubmit} className="bg-white p-8 rounded-lg shadow-xl">
         <div className="mb-5">
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          <label className="block mb-2 text-sm font-medium text-gray-700">
             Title
           </label>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Title"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Enter Post Title"
             required
           />
         </div>
         <button
           type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-3 transition duration-300"
         >
           Submit
         </button>
