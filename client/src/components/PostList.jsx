@@ -24,8 +24,8 @@ export default function PostList() {
         <h3 className="text-xl font-semibold text-gray-800 mb-4">
           {post.title}
         </h3>
-        <CommentCreate postId={post.id} />
         <CommentList postId={post.id} />
+        <CommentCreate postId={post.id} />
       </div>
     );
   });
