@@ -2,15 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export function CommentList({ postId }) {
-  /** http://localhost:4001/posts/d13cea0f-6ce6-4cc9-9d0e-d87ce57b0118/comments */
-
   const [comments, setComments] = useState([]);
 
   const fetchData = async () => {
     const res = await axios.get(
       `http://localhost:4001/posts/${postId}/comments`,
     );
-
     setComments(res.data);
   };
 
@@ -19,8 +16,20 @@ export function CommentList({ postId }) {
   }, []);
 
   const renderedComments = comments.map((comment) => {
-    return <li key={comment.id}>{comment.content}</li>;
+    return (
+      <li key={comment.id} className="bg-gray-100 rounded-md p-2 mb-2 text-sm">
+        {comment.content}
+      </li>
+    );
   });
 
-  return <ul>{renderedComments}</ul>;
+  return (
+    <ul className=" mt-4">
+      {renderedComments.length > 0 ? (
+        renderedComments
+      ) : (
+        <p className="text-gray-500 italic">No comments yet</p>
+      )}
+    </ul>
+  );
 }
