@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 import crypto from "node:crypto";
+import axios from "axios";
 
 const commentsByPostId = {};
 
@@ -16,7 +17,7 @@ app.get("/posts/:id/comments", (req, res) => {
   res.send(comments);
 });
 
-app.post("/posts/:id/comments", (req, res) => {
+app.post("/posts/:id/comments", async (req, res) => {
   const postId = req.params.id;
   const commentId = crypto.randomUUID();
   const { content } = req.body;
@@ -32,6 +33,15 @@ app.post("/posts/:id/comments", (req, res) => {
   comments.push(newComment);
 
   commentsByPostId[postId] = comments;
+
+  await axios.post("http://localhost:4005/events", {
+    type: "CommentCreated",
+    data: {
+      id: commentId,
+      content,
+      postId,
+    },
+  });
 
   res.status(201).send(newComment);
 });

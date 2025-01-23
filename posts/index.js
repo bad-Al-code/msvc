@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import axios from "axios";
 
 import crypto from "node:crypto";
 
@@ -14,7 +15,7 @@ app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
-app.post("/posts", (req, res) => {
+app.post("/posts", async (req, res) => {
   const id = crypto.randomUUID();
   const { title } = req.body;
 
@@ -25,6 +26,14 @@ app.post("/posts", (req, res) => {
   const post = { id, title };
 
   posts[id] = post;
+
+  await axios.post("http://localhost:4005/events", {
+    type: "PostCreated",
+    data: {
+      id,
+      title,
+    },
+  });
 
   res.status(201).send(post);
 });
