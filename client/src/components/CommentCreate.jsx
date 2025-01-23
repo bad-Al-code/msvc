@@ -15,11 +15,11 @@ export default function CommentCreate({ postId }) {
   };
 
   return (
-    <div className="w-full max-w-lg mx-auto mt-5">
-      <form onSubmit={onSubmit} className="bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="font-semibold text-2xl text-gray-800 mb-6">
-          New Comment
-        </h2>
+    <div className="w-full max-w-xl mx-auto mt-5 mb-2">
+      <form
+        onSubmit={onSubmit}
+        className="bg-gray-300 p-8 rounded-lg shadow-xl"
+      >
         <div className="mb-5">
           <label className="block mb-2 text-sm font-medium text-gray-700">
             Comment
@@ -27,7 +27,7 @@ export default function CommentCreate({ postId }) {
           <input
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
             placeholder="Enter Comment"
             required
           />
@@ -36,7 +36,7 @@ export default function CommentCreate({ postId }) {
           type="submit"
           className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-3 transition duration-300"
         >
-          Submit Comment
+          Submit
         </button>
       </form>
     </div>
