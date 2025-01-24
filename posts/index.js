@@ -1,10 +1,10 @@
-import express from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
-import axios from "axios";
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import axios from 'axios';
 import helmet from 'helmet';
 
-import crypto from "node:crypto";
+import crypto from 'node:crypto';
 
 const posts = {};
 
@@ -13,39 +13,39 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(cors({}));
 
-app.get("/posts", (req, res) => {
-  res.send(posts);
+app.get('/posts', (req, res) => {
+    res.send(posts);
 });
 
-app.post("/posts", async (req, res) => {
-  const id = crypto.randomUUID();
-  const { title } = req.body;
+app.post('/posts', async (req, res) => {
+    const id = crypto.randomUUID();
+    const { title } = req.body;
 
-  if (!title) {
-    return res.status(400).send({ error: "Title is required" });
-  }
+    if (!title) {
+        return res.status(400).send({ error: 'Title is required' });
+    }
 
-  const post = { id, title };
+    const post = { id, title };
 
-  posts[id] = post;
+    posts[id] = post;
 
-  await axios.post("http://localhost:4005/events", {
-    type: "PostCreated",
-    data: {
-      id,
-      title,
-    },
-  });
+    await axios.post('http://localhost:4005/events', {
+        type: 'PostCreated',
+        data: {
+            id,
+            title,
+        },
+    });
 
-  res.status(201).send(post);
+    res.status(201).send(post);
 });
 
-app.post("/events", (req, res) => {
-  console.log("received event", req.body.type);
+app.post('/events', (req, res) => {
+    console.log('received event', req.body.type);
 
-  res.send({});
+    res.send({});
 });
 
 app.listen(4000, () => {
-  console.log("Server running on port 4000");
+    console.log('Server running on port 4000');
 });

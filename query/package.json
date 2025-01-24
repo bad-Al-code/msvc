@@ -1,22 +1,24 @@
 {
-  "name": "query",
-  "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "start": "nodemon index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "body-parser": "^1.20.3",
-    "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "helmet": "^8.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.9"
-  }
+    "name": "query",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "nodemon index.js",
+        "format": "prettier . --write"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "body-parser": "^1.20.3",
+        "cors": "^2.8.5",
+        "express": "^4.21.2",
+        "helmet": "^8.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.9",
+        "prettier": "^3.4.2"
+    }
 }
