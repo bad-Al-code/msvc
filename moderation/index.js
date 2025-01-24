@@ -9,7 +9,7 @@ app.use(helmet());
 app.use(bodyParser.json());
 
 app.post('/events', async (req, res) => {
-    const { type, data } = req.body();
+    const { type, data } = req.body;
 
     if (type === 'CommentCreated') {
         const status = data.content.includes('orange') ? 'rejected' : 'approve';
