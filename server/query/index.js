@@ -51,6 +51,8 @@ app.post('/events', (req, res) => {
     res.send({});
 });
 
-app.listen(4002, () => {
+app.listen(4002, async () => {
     console.log('Query: 4002');
+
+    const res = await axios.get('http://localhost:4005/events');
 });
