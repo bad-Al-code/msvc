@@ -24,11 +24,11 @@ app.post('/events', (req, res) => {
     }
 
     if (type === 'CommentCreated') {
-        const { id, content, postId } = data;
+        const { id, content, postId, status } = data;
 
         const post = posts[postId];
         if (post) {
-            post.comments.push({ id, content });
+            post.comments.push({ id, content, status });
         } else {
             console.error(`Post with ID ${postId} not found.`);
         }
