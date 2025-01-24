@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import helmet from 'helmet';
+import axios from 'axios';
 
 const app = express();
 app.use(helmet());
@@ -55,4 +56,10 @@ app.listen(4002, async () => {
     console.log('Query: 4002');
 
     const res = await axios.get('http://localhost:4005/events');
+
+    for (let event of res.data) {
+        console.log('Processing Event: ', event.type);
+
+        handleEvent(event.type, event.data);
+    }
 });
