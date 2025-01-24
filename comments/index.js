@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import helmet from 'helmet';
 
 import crypto from "node:crypto";
 import axios from "axios";
@@ -9,6 +10,7 @@ const commentsByPostId = {};
 
 const app = express();
 
+app.use(helmet())
 app.use(bodyParser.json());
 app.use(cors({}));
 
