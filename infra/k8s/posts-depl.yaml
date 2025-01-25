@@ -15,3 +15,15 @@ spec:
       containers:
         - name: posts
           image: badal1/posts
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: post-clusterip-srv
+spec:
+  selector:
+    app: posts
+  ports:
+  - port: 4005
+    targetPort: 4005
