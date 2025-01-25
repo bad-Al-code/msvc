@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment 
+kind: Deployment
 metadata:
   name: posts-depl
 spec:
@@ -13,5 +13,5 @@ spec:
         app: posts
     spec:
       containers:
-        - name: posts 
-          image: badal/posts:1
+        - name: posts
+          image: badal1/posts
