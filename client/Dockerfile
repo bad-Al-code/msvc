@@ -1,11 +1,17 @@
-FROM node:alpine3.20 
+FROM node:alpine3.20 AS build
 
-WORKDIR /app 
+WORKDIR /app
 
-COPY package.json ./ 
+COPY package.json package-lock.json ./
 
-RUN npm install 
+RUN npm install
 
-COPY ./ ./ 
+COPY ./ ./
+
+FROM node:alpine3.20
+
+WORKDIR /app
+
+COPY --from=build /app /app
 
 CMD ["npm", "run", "dev"]

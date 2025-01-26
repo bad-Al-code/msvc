@@ -8,7 +8,7 @@ metadata:
     name: ingress-srv
 spec:
   rules:
-  - host: posts.com
+  - host: badal.com
     http:
       paths:
       - pathType: Prefix
