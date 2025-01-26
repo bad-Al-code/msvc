@@ -6,7 +6,7 @@ export default function PostCreate() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://badal.com/posts', { title });
+        await axios.post('http://badal.com/posts/create', { title });
         setTitle('');
     };
 

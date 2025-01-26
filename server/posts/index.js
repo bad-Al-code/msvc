@@ -17,7 +17,7 @@ app.get('/posts', (req, res) => {
     res.send(posts);
 });
 
-app.post('/posts', async (req, res) => {
+app.post('/posts/create', async (req, res) => {
     const id = crypto.randomUUID();
     const { title } = req.body;
 
