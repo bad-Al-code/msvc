@@ -76,5 +76,5 @@ app.post('/events', async (req, res) => {
 });
 
 app.listen(4001, () => {
-    console.log(`POST runnig on: 4001`);
+    console.log(`Comments runnig on: 4001`);
 });
