@@ -4,6 +4,7 @@ metadata:
   name: ingress-srv
   annotations: 
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/use-regex: 'true'
   labels:
     name: ingress-srv
 spec:
@@ -12,9 +13,33 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: /posts
+        path: /posts/create
         backend:
           service:
             name: post-clusterip-srv
             port: 
               number: 4000
+
+      - path: /posts
+        pathType: Prefix
+        backend: 
+          service:
+            name: query-srv
+            port:
+              number: 4002
+
+      - path: /posts/?(.*)/comments 
+        pathType: Prefix
+        backend:
+          service:
+            name: comments-srv
+            port:
+              number: 4001
+
+      - path: /?(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: clients-srv
+            port:
+              number: 5173
