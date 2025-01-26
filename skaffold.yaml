@@ -1,0 +1,61 @@
+apiVersion: skaffold/v4beta12
+kind: Config
+deploy:
+  kubectl:
+    remoteManifests:
+      - ./infra/k8s/*
+build:
+  local:
+    concurrency: 1
+    tryImportMissing: false
+    useDockerCLI: false 
+    push: false
+  artifacts:
+    - image: badal1/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: 'src/**/*.js'
+    - image: badal1/comments
+      context: ./server/comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: '*.js'
+    - image: badal1/event-bus
+      context: ./server/event-bus
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: '*.js'
+    - image: badal1/moderation
+      context: ./server/moderation
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: '*.js'
+    - image: badal1/posts
+      context: ./server/posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: '*.js'
+    - image: badal1/query
+      context: ./server/query
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: '*.js'
