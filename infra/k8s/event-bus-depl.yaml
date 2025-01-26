@@ -29,4 +29,4 @@ spec:
   - name: event-bus
     protocol: TCP
     port: 4005
-    targetPort: 40005
+    targetPort: 4005
